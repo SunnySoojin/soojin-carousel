@@ -3,10 +3,11 @@ const path = require('path');
 
 (async () => {
   const browser = await chromium.launch();
-  const page = await browser.newPage();
-
-  // 540x675 뷰포트 (1080x1350 @2x)
-  await page.setViewportSize({ width: 540, height: 675 });
+  const context = await browser.newContext({
+    deviceScaleFactor: 2,   // 2x → 실제 출력 1080×1350px
+    viewport: { width: 540, height: 675 },
+  });
+  const page = await context.newPage();
 
   const filePath = 'file://' + path.resolve(__dirname, 'jeju-innovation-center.html');
   await page.goto(filePath, { waitUntil: 'networkidle' });
