@@ -1,0 +1,24 @@
+{
+  "name": "soojin-carousel",
+  "version": "1.0.0",
+  "description": "A 10-slide HTML/CSS carousel introducing the **Jeju Innovation Growth Center** to international audiences. Designed as a social media card news format (Instagram / LinkedIn / Threads).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SunnySoojin/soojin-carousel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/SunnySoojin/soojin-carousel/issues"
+  },
+  "homepage": "https://github.com/SunnySoojin/soojin-carousel#readme",
+  "dependencies": {
+    "playwright": "^1.60.0"
+  }
+}
