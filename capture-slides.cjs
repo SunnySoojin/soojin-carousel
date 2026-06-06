@@ -15,6 +15,9 @@ const path = require('path');
   // 폰트·이미지 로딩 대기
   await page.waitForTimeout(2500);
 
+  // 캡처용 — 모서리 색 튀는 현상 제거
+  await page.addStyleTag({ content: '.slide { border-radius: 0 !important; }' });
+
   const slides = await page.$$('.slide');
   console.log(`Found ${slides.length} slides`);
 
