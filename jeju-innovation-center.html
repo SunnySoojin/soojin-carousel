@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제주혁신성장센터 카드뉴스</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --ocean:  #0B4F6C;
+    --teal:   #00B4CC;
+    --jeju:   #009FAD;
+    --orange: #FF6B35;
+    --dark:   #0D1B2A;
+    --gray:   #6B7280;
+    --border: #E2EEF2;
+    --light:  #F0F7FA;
+    --white:  #FFFFFF;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;
+    background:#D8E2E6;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:28px;
+    padding:44px 20px;
+  }
+
+  .page-title {
+    font-size:12px; color:#999; letter-spacing:.12em;
+    font-weight:600; text-transform:uppercase;
+  }
+
+  .slide {
+    width:540px; height:675px;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 12px 48px rgba(11,79,108,.22);
+    flex-shrink:0;
+  }
+  .slide-label {
+    font-size:11px; color:#999; font-weight:600;
+    letter-spacing:.06em; text-align:center; margin-top:6px;
+  }
+
+  .eyebrow {
+    font-size:10.5px; font-weight:700; letter-spacing:.18em;
+    text-transform:uppercase; margin-bottom:14px;
+  }
+  .divider {
+    width:38px; height:3px; border-radius:2px; margin:18px 0;
+  }
+
+  /* ── 1장 ── */
+  .s1 { background:#000; }
+  .s1-bg {
+    position:absolute; inset:0;
+    background:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_01.jpg') center/cover no-repeat;
+    filter:brightness(.45) saturate(1.1);
+  }
+  .s1-grad {
+    position:absolute; inset:0;
+    background:linear-gradient(to bottom, rgba(11,79,108,.25) 0%, rgba(13,27,42,.65) 55%, rgba(13,27,42,.92) 100%);
+  }
+  .s1-inner {
+    position:relative; z-index:3; height:100%;
+    display:flex; flex-direction:column;
+    justify-content:space-between; padding:44px 44px 40px;
+  }
+  .s1-badge {
+    align-self:flex-start;
+    background:rgba(255,255,255,.14); backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.22); border-radius:30px;
+    padding:6px 14px; font-size:10px; font-weight:700;
+    letter-spacing:.16em; color:rgba(255,255,255,.85);
+  }
+  .s1-eyebrow { font-size:10.5px; font-weight:700; letter-spacing:.2em; color:var(--teal); margin-bottom:16px; }
+  .s1-h { font-size:52px; font-weight:900; color:#fff; line-height:1.08; letter-spacing:-.03em; word-break:keep-all; }
+  .s1-h em { color:#A8EDEA; font-style:normal; }
+  .s1-sub { font-size:14.5px; color:rgba(255,255,255,.72); margin-top:18px; line-height:1.65; font-weight:400; word-break:keep-all; }
+  .s1-foot { display:flex; align-items:center; justify-content:space-between; }
+  .s1-foot-label { font-size:11px; color:rgba(255,255,255,.45); font-weight:500; letter-spacing:.04em; }
+  .s1-dots { display:flex; gap:5px; }
+  .s1-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.3); }
+  .s1-dot.on { background:#A8EDEA; width:18px; border-radius:3px; }
+
+  /* ── 2장 ── */
+  .s2 { background:var(--white); }
+  .s2-photo {
+    width:100%; height:220px; flex-shrink:0;
+    background:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_02.jpg') center/cover no-repeat;
+    position:relative;
+  }
+  .s2-photo-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, transparent 40%, rgba(255,255,255,1) 100%); }
+  .s2-photo-tag {
+    position:absolute; top:16px; left:20px;
+    background:var(--ocean); color:#fff; font-size:10px; font-weight:700;
+    letter-spacing:.14em; padding:5px 12px; border-radius:30px;
+  }
+  .s2-body { padding:28px 40px 36px; flex:1; display:flex; flex-direction:column; justify-content:space-between; }
+  .s2-eyebrow { color:var(--teal); }
+  .s2-h { font-size:32px; font-weight:900; color:var(--dark); line-height:1.2; letter-spacing:-.025em; word-break:keep-all; }
+  .s2-h span { color:var(--teal); }
+  .s2-divider { background:var(--teal); }
+  .s2-stats { display:flex; gap:10px; }
+  .s2-stat { flex:1; background:var(--light); border-radius:12px; padding:16px 14px; border-bottom:3px solid var(--teal); }
+  .s2-stat-num { font-size:26px; font-weight:900; color:var(--ocean); letter-spacing:-.02em; }
+  .s2-stat-label { font-size:11px; color:var(--gray); margin-top:4px; line-height:1.4; font-weight:500; word-break:keep-all; }
+
+  /* ── 3장 ── */
+  .s3 { background:var(--dark); flex-direction:row; }
+  .s3-left { flex:1; padding:46px 36px; display:flex; flex-direction:column; justify-content:space-between; z-index:2; }
+  .s3-right { width:200px; flex-shrink:0; position:relative; }
+  .s3-right-img {
+    position:absolute; inset:0;
+    background:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_03.jpg') center/cover no-repeat;
+    filter:brightness(.6) saturate(.9);
+  }
+  .s3-right-overlay { position:absolute; inset:0; background:linear-gradient(to right, var(--dark) 0%, transparent 40%); }
+  .s3-eyebrow { color:var(--teal); }
+  .s3-h { font-size:36px; font-weight:900; color:#fff; line-height:1.15; letter-spacing:-.025em; word-break:keep-all; }
+  .s3-h em { color:var(--orange); font-style:normal; }
+  .s3-divider { background:rgba(255,255,255,.2); }
+  .s3-pain-list { display:flex; flex-direction:column; gap:10px; }
+  .s3-pain { display:flex; gap:12px; align-items:flex-start; padding:14px 16px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:10px; }
+  .s3-pain-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+  .s3-pain-text { font-size:12.5px; color:rgba(255,255,255,.78); line-height:1.5; font-weight:500; word-break:keep-all; }
+  .s3-pain-text strong { color:#fff; display:block; margin-bottom:2px; }
+
+  /* ── 4장 ── */
+  .s4 { background:var(--white); }
+  .s4-top { padding:40px 40px 0; }
+  .s4-eyebrow { color:var(--ocean); }
+  .s4-h { font-size:34px; font-weight:900; color:var(--dark); line-height:1.18; letter-spacing:-.025em; word-break:keep-all; margin-bottom:10px; }
+  .s4-h span { color:var(--ocean); }
+  .s4-p { font-size:13.5px; color:#4B5563; line-height:1.7; word-break:keep-all; }
+  .s4-divider { background:var(--ocean); margin-left:40px; }
+  .s4-photo {
+    width:100%; height:200px;
+    background:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_04.jpg') center/cover no-repeat;
+    position:relative;
+  }
+  .s4-photo-bar { position:absolute; bottom:0; left:0; right:0; background:var(--ocean); padding:10px 20px; display:flex; gap:24px; }
+  .s4-bar-item { display:flex; align-items:baseline; gap:5px; }
+  .s4-bar-num { font-size:22px; font-weight:900; color:#A8EDEA; letter-spacing:-.02em; }
+  .s4-bar-label { font-size:11px; color:rgba(255,255,255,.7); font-weight:500; }
+
+  /* ── 5장 ── */
+  .s5 { background:var(--dark); }
+  .s5-top { padding:38px 40px 22px; }
+  .s5-eyebrow { color:var(--teal); }
+  .s5-h { font-size:34px; font-weight:900; color:#fff; line-height:1.18; letter-spacing:-.025em; word-break:keep-all; }
+  .s5-h span { color:#A8EDEA; }
+  .s5-divider { background:var(--teal); }
+  .s5-gallery { display:grid; grid-template-columns:1fr 1fr; gap:3px; flex:1; }
+  .s5-cell { position:relative; overflow:hidden; height:190px; }
+  .s5-cell-img { position:absolute; inset:0; background-size:cover; background-position:center; }
+  .s5-cell-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(13,27,42,.85) 0%, transparent 55%); }
+  .s5-cell-label { position:absolute; bottom:14px; left:14px; color:#fff; font-size:12px; font-weight:700; letter-spacing:-.01em; word-break:keep-all; line-height:1.3; }
+  .s5-cell-badge { display:block; font-size:10px; color:rgba(255,255,255,.65); font-weight:400; margin-top:2px; }
+
+  /* ── 6장 ── */
+  .s6 { background:var(--white); }
+  .s6-photo {
+    width:100%; height:230px;
+    background:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_07.jpg') center/cover no-repeat;
+    position:relative; flex-shrink:0;
+  }
+  .s6-photo-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(11,79,108,.3) 0%, rgba(255,255,255,1) 100%); }
+  .s6-photo-label { position:absolute; top:16px; right:16px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; letter-spacing:.12em; padding:5px 12px; border-radius:30px; }
+  .s6-body { padding:26px 40px 36px; flex:1; display:flex; flex-direction:column; justify-content:space-between; }
+  .s6-eyebrow { color:var(--orange); }
+  .s6-h { font-size:32px; font-weight:900; color:var(--dark); line-height:1.2; letter-spacing:-.025em; word-break:keep-all; }
+  .s6-h span { color:var(--ocean); }
+  .s6-divider { background:var(--orange); }
+  .s6-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .s6-item { padding:14px; background:var(--light); border-radius:12px; border-left:3px solid var(--teal); }
+  .s6-item-icon { font-size:20px; margin-bottom:6px; }
+  .s6-item-name { font-size:12.5px; font-weight:700; color:var(--dark); word-break:keep-all; line-height:1.3; }
+  .s6-item-desc { font-size:11px; color:var(--gray); margin-top:3px; line-height:1.4; word-break:keep-all; }
+
+  /* ── 7장 ── */
+  .s7 { background:#F8FAFB; }
+  .s7-photo {
+    width:100%; height:180px;
+    background:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_08.jpg') center/cover no-repeat;
+    position:relative; flex-shrink:0;
+  }
+  .s7-photo-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, transparent 30%, #F8FAFB 100%); }
+  .s7-photo-chip { position:absolute; top:14px; left:18px; background:rgba(11,79,108,.85); backdrop-filter:blur(6px); color:#fff; font-size:10px; font-weight:700; letter-spacing:.12em; padding:5px 12px; border-radius:30px; }
+  .s7-body { padding:20px 40px 36px; flex:1; display:flex; flex-direction:column; justify-content:space-between; }
+  .s7-eyebrow { color:var(--teal); }
+  .s7-h { font-size:32px; font-weight:900; color:var(--dark); line-height:1.2; letter-spacing:-.025em; word-break:keep-all; }
+  .s7-h span { color:var(--ocean); }
+  .s7-divider { background:var(--teal); margin:14px 0; }
+  .s7-steps { display:flex; flex-direction:column; gap:8px; }
+  .s7-step { display:flex; gap:14px; align-items:center; padding:13px 16px; background:#fff; border-radius:10px; border:1.5px solid var(--border); }
+  .s7-num { width:28px; height:28px; flex-shrink:0; background:var(--ocean); color:#fff; font-size:12px; font-weight:900; border-radius:8px; display:flex; align-items:center; justify-content:center; }
+  .s7-title { font-size:12.5px; font-weight:700; color:var(--dark); }
+  .s7-desc { font-size:11px; color:var(--gray); margin-top:2px; word-break:keep-all; line-height:1.4; }
+  .s7-notice { background:rgba(0,180,204,.08); border-radius:10px; padding:11px 16px; font-size:12px; color:var(--ocean); font-weight:600; line-height:1.55; word-break:keep-all; }
+
+  /* ── 8장 ── */
+  .s8 { background:#000; }
+  .s8-bg {
+    position:absolute; inset:0;
+    background:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_05.jpg') center/cover no-repeat;
+    filter:brightness(.35) saturate(.8);
+  }
+  .s8-grad { position:absolute; inset:0; background:linear-gradient(160deg, rgba(11,79,108,.5) 0%, rgba(13,27,42,.88) 100%); }
+  .s8-inner { position:relative; z-index:3; height:100%; padding:46px 44px; display:flex; flex-direction:column; justify-content:space-between; }
+  .s8-eyebrow { color:rgba(255,255,255,.55); }
+  .s8-quote-mark { font-size:72px; line-height:.8; color:var(--teal); font-family:Georgia,serif; opacity:.6; margin-bottom:12px; display:block; }
+  .s8-quote { font-size:28px; font-weight:900; color:#fff; line-height:1.3; letter-spacing:-.025em; word-break:keep-all; }
+  .s8-quote span { color:#A8EDEA; }
+  .s8-quote-sub { font-size:13px; color:rgba(255,255,255,.62); margin-top:16px; line-height:1.7; word-break:keep-all; }
+  .s8-divider { background:rgba(255,255,255,.2); }
+  .s8-pill-row { display:flex; gap:10px; flex-wrap:wrap; }
+  .s8-pill { padding:8px 16px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:30px; font-size:12px; font-weight:700; color:rgba(255,255,255,.85); }
+
+  /* ── 9장 ── */
+  .s9 { background:var(--ocean); }
+  .s9-top { padding:42px 40px 0; }
+  .s9-eyebrow { color:rgba(255,255,255,.6); }
+  .s9-h { font-size:36px; font-weight:900; color:#fff; line-height:1.18; letter-spacing:-.025em; word-break:keep-all; }
+  .s9-h span { color:#A8EDEA; }
+  .s9-divider { background:rgba(255,255,255,.25); }
+  .s9-photo-strip { margin:0 0 20px; height:100px; overflow:hidden; display:flex; gap:3px; }
+  .s9-strip-cell { flex:1; background-size:cover; background-position:center; filter:brightness(.7) saturate(.8); }
+  .s9-list { padding:0 40px 36px; display:flex; flex-direction:column; gap:9px; }
+  .s9-item { display:flex; gap:12px; align-items:flex-start; padding:13px 16px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.12); border-radius:11px; }
+  .s9-check { width:22px; height:22px; flex-shrink:0; border:2px solid rgba(255,255,255,.4); border-radius:6px; margin-top:1px; }
+  .s9-text { font-size:12.5px; font-weight:600; color:rgba(255,255,255,.9); word-break:keep-all; line-height:1.4; }
+  .s9-text span { display:block; font-size:11px; font-weight:400; color:rgba(255,255,255,.5); margin-top:2px; }
+  .s9-save { text-align:center; padding:0 40px 28px; font-size:11px; color:rgba(255,255,255,.4); font-weight:600; letter-spacing:.06em; }
+
+  /* ── 10장 ── */
+  .s10 { background:#000; }
+  .s10-bg {
+    position:absolute; inset:0;
+    background:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_06.jpg') center/cover no-repeat;
+    filter:brightness(.3) saturate(.7);
+  }
+  .s10-grad { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(13,27,42,.4) 0%, rgba(11,79,108,.6) 50%, rgba(13,27,42,.96) 100%); }
+  .s10-inner { position:relative; z-index:3; height:100%; padding:44px 44px 40px; display:flex; flex-direction:column; justify-content:space-between; }
+  .s10-badge { align-self:flex-start; background:var(--teal); color:#fff; font-size:10px; font-weight:700; letter-spacing:.14em; padding:6px 14px; border-radius:30px; }
+  .s10-h { font-size:44px; font-weight:900; color:#fff; line-height:1.1; letter-spacing:-.03em; word-break:keep-all; }
+  .s10-h span { color:#A8EDEA; }
+  .s10-sub { font-size:14px; color:rgba(255,255,255,.68); margin-top:14px; line-height:1.65; word-break:keep-all; }
+  .s10-contact { background:rgba(255,255,255,.1); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.18); border-radius:16px; padding:22px 24px; }
+  .s10-contact-title { font-size:12px; font-weight:700; color:rgba(255,255,255,.7); letter-spacing:.08em; margin-bottom:12px; }
+  .s10-contact-rows { display:flex; flex-direction:column; gap:8px; }
+  .s10-row { display:flex; gap:10px; align-items:center; font-size:13px; color:rgba(255,255,255,.82); font-weight:500; }
+  .s10-icon { font-size:14px; flex-shrink:0; }
+  .s10-foot { display:flex; align-items:center; justify-content:space-between; }
+  .s10-logo { font-size:12px; font-weight:700; color:rgba(255,255,255,.4); letter-spacing:.04em; }
+  .s10-save { font-size:11px; color:rgba(255,255,255,.4); }
+</style>
+</head>
+<body>
+
+<p class="page-title">제주혁신성장센터 · 카드뉴스 · 10장</p>
+
+<!-- 1장 -->
+<div class="slide s1">
+  <div class="s1-bg"></div>
+  <div class="s1-grad"></div>
+  <div class="s1-inner">
+    <div class="s1-badge">제주첨단과학기술단지</div>
+    <div>
+      <div class="s1-eyebrow">JEJU INNOVATION GROWTH CENTER</div>
+      <div class="s1-h">제주에서<br>창업하면<br><em>달라집니다</em></div>
+      <div class="s1-sub">공간도, 장비도, 네트워크도.<br>제주혁신성장센터가 채워줍니다.</div>
+    </div>
+    <div class="s1-foot">
+      <div class="s1-foot-label">청년 창업 지원 카드뉴스</div>
+      <div class="s1-dots">
+        <div class="s1-dot on"></div>
+        <div class="s1-dot"></div><div class="s1-dot"></div>
+        <div class="s1-dot"></div><div class="s1-dot"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="slide-label">1장 · 도입</div>
+
+<!-- 2장 -->
+<div class="slide s2">
+  <div class="s2-photo">
+    <div class="s2-photo-overlay"></div>
+    <div class="s2-photo-tag">왜 지금, 왜 제주인가</div>
+  </div>
+  <div class="s2-body">
+    <div>
+      <div class="eyebrow s2-eyebrow">서울 밖의 창업 생태계</div>
+      <div class="s2-h">제주에 <span>ICT 창업</span><br>허브가 생겼다</div>
+      <div class="divider s2-divider"></div>
+      <div style="font-size:14px;color:#4B5563;line-height:1.7;word-break:keep-all;">
+        수도권 집중을 피해 더 낮은 비용으로,<br>더 집중된 환경에서 시작하는 창업자들이 늘고 있다.
+      </div>
+    </div>
+    <div class="s2-stats">
+      <div class="s2-stat"><div class="s2-stat-num">20개</div><div class="s2-stat-label">전용 오피스<br>입주 공간</div></div>
+      <div class="s2-stat"><div class="s2-stat-num">6곳</div><div class="s2-stat-label">회의·컨퍼런스<br>룸 합계</div></div>
+      <div class="s2-stat"><div class="s2-stat-num">40인</div><div class="s2-stat-label">인피니티홀<br>최대 수용</div></div>
+    </div>
+  </div>
+</div>
+<div class="slide-label">2장 · 궁금증 확장</div>
+
+<!-- 3장 -->
+<div class="slide s3">
+  <div class="s3-right">
+    <div class="s3-right-img"></div>
+    <div class="s3-right-overlay"></div>
+  </div>
+  <div class="s3-left">
+    <div>
+      <div class="eyebrow s3-eyebrow">창업의 가장 큰 장벽</div>
+      <div class="s3-h">아이디어가<br>공간 앞에서<br><em>멈춘다</em></div>
+      <div class="divider s3-divider"></div>
+    </div>
+    <div class="s3-pain-list">
+      <div class="s3-pain"><div class="s3-pain-icon">🏢</div><div class="s3-pain-text"><strong>높은 사무실 비용</strong>초기 자금이 임대료에 묶인다</div></div>
+      <div class="s3-pain"><div class="s3-pain-icon">🤝</div><div class="s3-pain-text"><strong>연결망 부재</strong>투자자·멘토를 만날 기회가 없다</div></div>
+      <div class="s3-pain"><div class="s3-pain-icon">🎤</div><div class="s3-pain-text"><strong>발표·행사 공간 부족</strong>데모데이 하나도 장소 구하기 어렵다</div></div>
+    </div>
+  </div>
+</div>
+<div class="slide-label">3장 · 문제 정의</div>
+
+<!-- 4장 -->
+<div class="slide s4">
+  <div class="s4-top">
+    <div class="eyebrow s4-eyebrow">관점 전환</div>
+    <div class="s4-h">센터는 <span>단순한</span><br>임대 공간이 아니다</div>
+    <div class="s4-p">제주첨단과학기술단지 안의 ICT 창업 융합허브.<br>창업의 모든 단계를 한 지붕 아래서 해결한다.</div>
+    <div class="divider s4-divider"></div>
+  </div>
+  <div class="s4-photo">
+    <div class="s4-photo-bar">
+      <div class="s4-bar-item"><div class="s4-bar-num">20개</div><div class="s4-bar-label">오피스</div></div>
+      <div class="s4-bar-item"><div class="s4-bar-num">A동 2F</div><div class="s4-bar-label">세미양동</div></div>
+      <div class="s4-bar-item"><div class="s4-bar-num">ICT</div><div class="s4-bar-label">창업허브</div></div>
+      <div class="s4-bar-item"><div class="s4-bar-num">3개월</div><div class="s4-bar-label">선예약 가능</div></div>
+    </div>
+  </div>
+</div>
+<div class="slide-label">4장 · 관점 전환 1</div>
+
+<!-- 5장 -->
+<div class="slide s5">
+  <div class="s5-top">
+    <div class="eyebrow s5-eyebrow">공간이 바뀌면 성과가 바뀐다</div>
+    <div class="s5-h">창업에 필요한<br>모든 공간이 <span>여기</span></div>
+    <div class="divider" style="background:var(--teal);"></div>
+  </div>
+  <div class="s5-gallery">
+    <div class="s5-cell"><div class="s5-cell-img" style="background-image:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_05.jpg');"></div><div class="s5-cell-overlay"></div><div class="s5-cell-label">전용 오피스<span class="s5-cell-badge">20개 · 입주 전용</span></div></div>
+    <div class="s5-cell"><div class="s5-cell-img" style="background-image:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_06.jpg');"></div><div class="s5-cell-overlay"></div><div class="s5-cell-label">소회의실<span class="s5-cell-badge">3곳 · 8인 수용</span></div></div>
+    <div class="s5-cell"><div class="s5-cell-img" style="background-image:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_07.jpg');"></div><div class="s5-cell-overlay"></div><div class="s5-cell-label">컨퍼런스룸<span class="s5-cell-badge">3곳 · 19인 수용</span></div></div>
+    <div class="s5-cell"><div class="s5-cell-img" style="background-image:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_08.jpg');"></div><div class="s5-cell-overlay"></div><div class="s5-cell-label">인피니티홀<span class="s5-cell-badge">30–40인 · 빔·마이크 구비</span></div></div>
+  </div>
+</div>
+<div class="slide-label">5장 · 관점 전환 2</div>
+
+<!-- 6장 -->
+<div class="slide s6">
+  <div class="s6-photo"><div class="s6-photo-overlay"></div><div class="s6-photo-label">핵심 지원 인프라</div></div>
+  <div class="s6-body">
+    <div>
+      <div class="eyebrow s6-eyebrow">공간 이상의 지원</div>
+      <div class="s6-h">장비도, 예약도<br><span>다 갖춰져 있다</span></div>
+      <div class="divider s6-divider"></div>
+    </div>
+    <div class="s6-grid">
+      <div class="s6-item"><div class="s6-item-icon">🖥️</div><div class="s6-item-name">발표 장비 지원</div><div class="s6-item-desc">빔·무선마이크·노트북<br>요청 시 HDMI 제공</div></div>
+      <div class="s6-item"><div class="s6-item-icon">📅</div><div class="s6-item-name">온라인 예약</div><div class="s6-item-desc">네이버 예약 &<br>Route330 ICT 연동</div></div>
+      <div class="s6-item"><div class="s6-item-icon">🕘</div><div class="s6-item-name">정규 운영</div><div class="s6-item-desc">평일 09:00–18:00<br>안정적 운영 시간</div></div>
+      <div class="s6-item"><div class="s6-item-icon">🌐</div><div class="s6-item-name">첨단단지 생태계</div><div class="s6-item-desc">기술 기반 기업들과<br>단지 내 협업 가능</div></div>
+    </div>
+  </div>
+</div>
+<div class="slide-label">6장 · 핵심 설명</div>
+
+<!-- 7장 -->
+<div class="slide s7">
+  <div class="s7-photo"><div class="s7-photo-overlay"></div><div class="s7-photo-chip">이용 방법</div></div>
+  <div class="s7-body">
+    <div>
+      <div class="eyebrow s7-eyebrow">지금 바로 시작하는 법</div>
+      <div class="s7-h">입주와 예약,<br><span>4단계면 된다</span></div>
+      <div class="s7-divider"></div>
+    </div>
+    <div class="s7-steps">
+      <div class="s7-step"><div class="s7-num">1</div><div><div class="s7-title">공간 선택</div><div class="s7-desc">오피스 입주 / 회의실 / 컨퍼런스룸 / 인피니티홀</div></div></div>
+      <div class="s7-step"><div class="s7-num">2</div><div><div class="s7-title">온라인 예약 신청</div><div class="s7-desc">네이버 예약 또는 Route330 ICT 사이트</div></div></div>
+      <div class="s7-step"><div class="s7-num">3</div><div><div class="s7-title">예약 확정 대기</div><div class="s7-desc">신청 후 2–3일 이내 확정 · 최대 3개월 선예약</div></div></div>
+      <div class="s7-step"><div class="s7-num">4</div><div><div class="s7-title">방문 및 이용</div><div class="s7-desc">평일 9–18시 · 장비 필요 시 사전 요청</div></div></div>
+    </div>
+    <div class="s7-notice">📍 제주시 첨단로 213-4 세미양동 A동 2층 &nbsp;|&nbsp; ☎ 064-797-5500</div>
+  </div>
+</div>
+<div class="slide-label">7장 · 적용 방식</div>
+
+<!-- 8장 -->
+<div class="slide s8">
+  <div class="s8-bg"></div>
+  <div class="s8-grad"></div>
+  <div class="s8-inner">
+    <div class="eyebrow s8-eyebrow">결정적 깨달음</div>
+    <div>
+      <span class="s8-quote-mark">"</span>
+      <div class="s8-quote">창업의 성패는<br>아이디어가 아니라<br><span>환경이 절반</span>이다</div>
+      <div class="s8-quote-sub">같은 꿈을 가진 사람들이 모인 공간에서<br>부딪히며 성장하는 속도는 혼자일 때와 다르다.<br>제주혁신성장센터는 그 환경을 제공한다.</div>
+    </div>
+    <div>
+      <div class="divider s8-divider"></div>
+      <div class="s8-pill-row">
+        <div class="s8-pill">💡 아이디어 검증</div>
+        <div class="s8-pill">🤝 네트워크</div>
+        <div class="s8-pill">🚀 빠른 실행</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="slide-label">8장 · 결정적 깨달음</div>
+
+<!-- 9장 -->
+<div class="slide s9">
+  <div class="s9-top">
+    <div class="eyebrow s9-eyebrow">저장 포인트 · 실행 체크리스트</div>
+    <div class="s9-h">지금 당장<br><span>확인할 것</span></div>
+    <div class="divider s9-divider"></div>
+  </div>
+  <div class="s9-photo-strip">
+    <div class="s9-strip-cell" style="background-image:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_01.jpg');"></div>
+    <div class="s9-strip-cell" style="background-image:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_02.jpg');"></div>
+    <div class="s9-strip-cell" style="background-image:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_04.jpg');"></div>
+    <div class="s9-strip-cell" style="background-image:url('https://www.jeju-sp.com/pub/site/jejusp/images/sub/sub3_5_ict_06.jpg');"></div>
+  </div>
+  <div class="s9-list">
+    <div class="s9-item"><div class="s9-check"></div><div class="s9-text">ICT 기반 창업 아이템 보유 여부 확인<span>기술·디지털 서비스 분야 우선</span></div></div>
+    <div class="s9-item"><div class="s9-check"></div><div class="s9-text">공간 형태 결정 (입주 vs 단기 대관)<span>목적에 맞는 공간 선택이 먼저</span></div></div>
+    <div class="s9-item"><div class="s9-check"></div><div class="s9-text">네이버 예약 또는 Route330 ICT 계정 생성<span>빠를수록 유리 · 3개월 선예약 가능</span></div></div>
+    <div class="s9-item"><div class="s9-check"></div><div class="s9-text">064-797-5500 으로 입주 직접 문의<span>평일 9–18시 · jeju-sp@jdcenter.com</span></div></div>
+    <div class="s9-item"><div class="s9-check"></div><div class="s9-text">단지 내 기업 네트워크 탐색 시작<span>같은 단지 기술 기업들과 협업 기회</span></div></div>
+  </div>
+  <div class="s9-save">↑ 저장해두면 나중에 유용합니다</div>
+</div>
+<div class="slide-label">9장 · 실행 체크리스트</div>
+
+<!-- 10장 -->
+<div class="slide s10">
+  <div class="s10-bg"></div>
+  <div class="s10-grad"></div>
+  <div class="s10-inner">
+    <div class="s10-badge">마무리</div>
+    <div>
+      <div class="s10-h">제주에서의<br>시작을<br><span>고민 중이라면</span></div>
+      <div class="s10-sub">제주혁신성장센터가 공간, 장비, 생태계를 제공합니다.<br>당신은 아이디어와 실행력만 가져오면 됩니다.</div>
+    </div>
+    <div class="s10-contact">
+      <div class="s10-contact-title">📬 지금 문의하세요</div>
+      <div class="s10-contact-rows">
+        <div class="s10-row"><span class="s10-icon">📞</span><span>064-797-5500 (평일 9:00–18:00)</span></div>
+        <div class="s10-row"><span class="s10-icon">✉️</span><span>jeju-sp@jdcenter.com</span></div>
+        <div class="s10-row"><span class="s10-icon">📍</span><span>제주시 첨단로 213-4 · 세미양동 A동 2층</span></div>
+        <div class="s10-row"><span class="s10-icon">🌐</span><span>www.jeju-sp.com</span></div>
+      </div>
+    </div>
+    <div class="s10-foot">
+      <div class="s10-logo">제주혁신성장센터</div>
+      <div class="s10-save">🔖 도움이 됐다면 저장해두세요</div>
+    </div>
+  </div>
+</div>
+<div class="slide-label">10장 · 마무리 CTA</div>
+
+</body>
+</html>
